@@ -9,7 +9,6 @@ import * as data from './../assets/pos.products.json';
 export class AppComponent {
   title = 'pos-assignment';
   products: any = (data as any).default;
-  date=new Date();
   cart:any = [];
   subtotal:number = 0
   total_quantity:number = 0
@@ -37,7 +36,7 @@ export class AppComponent {
   }
 
   remove(i:number){
-    this.cart.pop()
+    this.cart.splice(i,1);
     this.get_sum()
   }
   update_quantity(x,i){
@@ -67,11 +66,11 @@ export class AppComponent {
   
   value_update(event: any,type:number) {
     if(type==1){
-      this.vat = (this.subtotal*event.target.value/100);
+      this.vat = event.target.value
     }
     else{
-      this.discount = (this.subtotal*event.target.value/100);
+      this.discount = event.target.value
     }
-    this.grand_total = this.subtotal+this.vat-this.discount
+    this.grand_total = this.subtotal+this.subtotal*(this.vat-this.discount)/100
     }
 }
