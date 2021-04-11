@@ -1,0 +1,78 @@
+.product {
+    opacity: 0.7;
+    width: 6rem;
+    height: 6rem;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    border: none;
+    background-color: #ddd;
+    padding: 10px;
+}
+
+.remove {
+    background: #C9302C;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-weight: 600;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+}
+
+.checkout {
+    width: fill-available;
+}
+
+.product .title {
+    font-weight: 600
+}
+
+.product .desc {
+    font-size: 0.7rem;
+    letter-spacing: 2;
+}
+
+.hide {
+    display: none;
+}
+
+.product:hover .hide {
+    display: block;
+}
+
+table {
+    background-color: white;
+}
+
+tr {
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.receipt {
+    background-color: blue;
+    padding: 10px;
+    width: fill-available;
+    margin: -20px;
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+button {
+    padding: 20px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    width: 50%;
+}

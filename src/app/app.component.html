@@ -1,0 +1,99 @@
+<div class="body">
+    <div class="box">
+        <table width='100%' border="0">
+            <tr>
+                <th>DELETE</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>TOTAL</th>
+            </tr>
+            <tr *ngFor='let cart_element of cart;let i = index'>
+                <td (click)="remove(cart_element)"><button class="remove">X</button></td>
+                <td>{{cart_element.title}}</td>
+                <td>{{cart_element.price}}</td>
+                <td><input type="number" value={{cart_element.quantity}} (keyup)="update_quantity($event,i)" style="width: 2rem;"></td>
+                <td>{{cart_element.total}}</td>
+            </tr>
+        </table>
+        <div class="empty" *ngIf='cart.length===0 else cart'>
+            <h1>THERES NO ELEMENT IN CART</h1>
+        </div>
+        <div class="checkout">
+            <table width="100%">
+                <tr>
+                    <td>Subtotal</td>
+                    <td>{{subtotal}}</td>
+                    <td>{{total_quantity}}</td>
+                </tr>
+                <tr>
+                    <td>VAT</td>
+                    <td><input value="0" type="number" (input)="value_update($event,1)"></td>
+                    <td>{{vat}}rs</td>
+                </tr>
+                <tr>
+                    <td>DISCOUNT</td>
+                    <td><input value="0" type="number" (input)="value_update($event,2)"></td>
+                    <td>{{discount}}rs</td>
+                </tr>
+                <tr>
+                    <td>TOTAL</td>
+                    <td><span style="color:#60cf60">{{grand_total}}</span></td>
+                </tr>
+            </table>
+            <button style="background-color: #C9302C;" (click)="clear()">CANCEL SALE</button>
+            <button style="background-color: #60cf60;" (click)="open()">PROCESS SALE</button>
+        </div>
+    </div>
+    <div class="box">
+        <div *ngFor='let product of products;let i = index' class="product" (click)="addtocart(i)" [style]="{background: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(/assets/images/'+product.image+')'}">
+            <span class="title"> {{product.name}}</span>
+            <div class="hide">{{product.price}} Rs<br> <span class="desc">{{product.description}}</span></div>
+        </div>
+    </div>
+
+    <div class="modal-back" *ngIf='modal===true'>
+        <div class="modal">
+            <div class='receipt'>
+                RECEIPT
+            </div>
+            sale no:18256
+            <br> Date: {{Date | date:'yyyy-MMM-dd'}}
+            <table width='100%' border="0">
+                <tr>
+
+                    <th>#</th>
+                    <th>product</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL</th>
+
+                </tr>
+                <tr *ngFor='let cart_element of cart;let i =index'>
+                    <td>{{i+1}}</td>
+                    <td>{{cart_element.title}}</td>
+                    <td>{{cart_element.quantity}}</td>
+                    <td>{{cart_element.total}}</td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <td>total Items</td>
+                    <td>{{total_quantity}}</td>
+                    <td>{{grand_total}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>VAT</td>
+                    <td>{{vat}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>DISCOUNT</td>
+                    <td>{{discount}}</td>
+                </tr>
+            </table>
+            <butotn (click)="open()">close</butotn>
+        </div>
+
+    </div>
+</div>
