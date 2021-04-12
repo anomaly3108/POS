@@ -16,9 +16,27 @@ export class AppComponent {
   discount:number = 0
   grand_total:number = 0
   modal:boolean = false
-  constructor(){}
+  color:any = []
+
+
+  constructor(){
+  }
   ngOnInit(){
     console.log(this.products)
+    this.show_color()
+  }
+
+  show_color(){
+    this.products.forEach(x => {
+      switch(x.category){
+        case 'Clothing': this.color.push('0,0,0');break;
+        case 'fruits': this.color.push('0,255,0');break;
+        case 'computers': this.color.push('0,0,255');break;
+        case 'services': this.color.push('0,0,0');break;
+        default: this.color.push('255,0,0');break;
+      }
+    });
+    console.log(this.color)
   }
 
   addtocart(i:number){
@@ -39,11 +57,13 @@ export class AppComponent {
     this.cart.splice(i,1);
     this.get_sum()
   }
+
   update_quantity(x,i){
     this.cart[i].quantity = x.target.value
     this.cart[i].total = parseInt(this.cart[i].price) * parseInt(x.target.value)
     this.get_sum()
   }
+
   get_sum(){
     this.subtotal = 0
     this.total_quantity = 0
@@ -52,18 +72,16 @@ export class AppComponent {
       this.total_quantity+= parseInt(this.cart[i].quantity)
     }
   }
-  
+
   open(){
     this.modal = !this.modal
   }
+
   clear(){
     this.cart = []
-    this.vat = 0
-    this.discount = 0
-    this.grand_total = 0
+    this.get_sum()
   }
 
-  
   value_update(event: any,type:number) {
     if(type==1){
       this.vat = event.target.value
@@ -72,5 +90,5 @@ export class AppComponent {
       this.discount = event.target.value
     }
     this.grand_total = this.subtotal+this.subtotal*(this.vat-this.discount)/100
-    }
+  }
 }
