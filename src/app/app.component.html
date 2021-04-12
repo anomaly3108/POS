@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="box" style="width:60%">
-        <div *ngFor='let product of products;let i = index' class="product" (click)="addtocart(i)" [style]="{background: 'linear-gradient(rgba('+color[i]+', 0.6), rgba('+color[i]+', 0.6)), url(/assets/images/'+product.image+')'}">
+        <div *ngFor='let product of products;let i = index' class="product" (click)="addtocart(i)" [style]="{background: 'linear-gradient(rgba('+show_color(product.category)+', 0.6), rgba('+show_color(product.category)+', 0.6)), url(/assets/images/'+product.image+')'}">
             <span class="title"> {{product.name}}</span>
             <div class="hide">{{product.price}} Rs<br> <span class="desc">{{product.description}}</span></div>
         </div>

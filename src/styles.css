@@ -1,6 +1,7 @@
 .body {
     display: flex;
     flex-direction: row;
+    transition: linear 1s;
 }
 
 .box {

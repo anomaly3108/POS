@@ -7,6 +7,7 @@
     border-radius: 20px;
     color: white;
     text-align: center;
+    transition: linear 0.2s;
 }
 
 table {
@@ -52,6 +53,7 @@ input {
 
 .hide {
     display: none;
+    transition: linear 0.5s;
 }
 
 .product:hover .hide {

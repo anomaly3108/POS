@@ -23,20 +23,18 @@ export class AppComponent {
   }
   ngOnInit(){
     console.log(this.products)
-    this.show_color()
   }
 
-  show_color(){
-    this.products.forEach(x => {
-      switch(x.category){
-        case 'Clothing': this.color.push('0,0,0');break;
-        case 'fruits': this.color.push('0,255,0');break;
-        case 'computers': this.color.push('0,0,255');break;
-        case 'services': this.color.push('0,0,0');break;
-        default: this.color.push('255,0,0');break;
-      }
-    });
-    console.log(this.color)
+  show_color(i){
+    let color = '';
+    switch(i){
+      case 'Clothing': color = '128,0,128';break;
+      case 'fruits': color = '255,0,0';break;
+      case 'computers': color = '0,255,0';break;
+      case 'services': color = '0,0,255';break;
+      default: color = '0,0,0';break;
+    }
+    return(color)
   }
 
   addtocart(i:number){
